@@ -1,34 +1,59 @@
-console.log("Up and running!");
+var cards = [{
+        rank: "queen",
+        suit: "hearts",
+        cardImage: "images/queen-of-hearts.png"
+    },
+    {
+        rank: "queen",
+        suit: "diamonds",
+        cardImage: "images/queen-of-diamonds.png"
+    },
+    {
+        rank: "king",
+        suit: "hearts",
+        cardImage: "images/king-of-hearts.png"
+    },
+    {
+        rank: "king",
+        suit: "diamonds",
+        cardImage: "images/king-of-diamonds.png"
+    }
+];
+var cardsInPlay = [];
+
+function randomizeCards() {
+    var randomCards = []
+    while (cards.length !== 0) {
+        let randomIndex = Math.floor(Math.random() * cards.length);
+        randomCards.push(cards[randomIndex]);
+        cards.splice(randomIndex, 1);   }
+    cards = randomCards;    }
 
 
-console.log("User flipped " + CardOne);
-
-alert('Hello, friends.');
-
-const Cards =['queen','queen','king','king'] ;
-const CardsInPlay= [] ;
-
-var CardOne = Cards[0];
-CardsInPlay.push(CardOne);
-
-console.log("User flipped queen")
-
-var CardTwo = Cards[2];
-CardsInPlay.push(CardTwo);
-
-console.log("User flipped king")
-
-if (CardsInPlay.length == 2) {
-if (CardsInPlay[0]===CardsInPlay[1] ) {
-  alert("You found a match!");
-}
-else{
-  alert("Sorry, try again.");
-}
-}
+function createBoard() {
+    randomizeCards();
+    for (var i = 0; i < cards.length; i++) {
+        var cardElement = document.createElement('img');
+        cardElement.setAttribute('src', "images/back.png");
+        cardElement.setAttribute('data-id', i);
+        cardElement.addEventListener('click', flipCard);
+        document.getElementById("game-board").appendChild(cardElement);  }   }
 
 
+function checkForMatch() {
+    var score = 0;
+  if (cardsInPlay.length === 2) {
+        if (cardsInPlay[0] === cardsInPlay[1]) {
+            alert("You Found a Match");}
+           else {
+            alert("Sorry, try again");    }     }     }
 
 
-//var cardThree= "king";
-//var cardFour = "king";
+function flipCard() {
+    var cardId = this.getAttribute('data-id');
+    cardsInPlay.push(cards[cardId].rank);
+    this.setAttribute('src', cards[cardId].cardImage);
+    checkForMatch();    }
+
+
+createBoard();

@@ -4,6 +4,14 @@ letter-spacing:1 px;
 font-weight: 400;
 font-size:45px;
 margin: 0;
+text-transform: Uppercase;
+}
+h2{
+font-family: "Raleway";
+color:#0D2C40;
+letter-spacing:1 px;
+font-weight: 600;
+font-size:20px;
 }
 a{
 font-family: "Raleway";
@@ -19,13 +27,6 @@ a:hover {
 border-color: #FFFFFF;
 }
 
-h2{
-font-family: "Raleway";
-color:#0D2C40;
-letter-spacing:1 px;
-font-weight: 600;
-font-size:20px;
-}
 p {
 font-family: "Droid serif";
 line-height:26px;
